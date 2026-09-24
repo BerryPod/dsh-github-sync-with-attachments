@@ -1,0 +1,18 @@
+# dsh-github-sync-with-attachments bundle patch: contributes the plugin row into
+# the host composition when this package is installed via `dsh plugin add`.
+#
+# The plugin is HOST-PLANE: it owns no agent-session behaviour, it only mirrors
+# $DSH_HOME (sessions / attachments / plugin manifests / settings) to a private
+# GitHub repository and serves its HTTP API over a webServer route. Its client
+# half registers the settings-page surface. It must therefore land in the host
+# composition (this insert), never inside an agent preset.
+#
+# The row id is this fork's own package name on purpose: installing it next to
+# the original dsh-github-sync composes two independent rows instead of
+# colliding on one id. They must still never point at the same repository at the
+# same time — the original does not know the `attachments/` group, would see
+# this fork's files as deletions, and remove them.
+
+- insert:
+    - id: dsh-github-sync-with-attachments
+      name: "dsh-github-sync-with-attachments"

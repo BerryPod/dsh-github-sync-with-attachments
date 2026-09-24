@@ -1,0 +1,9 @@
+# Dependencies are installed by `dsh plugin add` / pnpm inside the profile, never here.
+node_modules/
+
+# `npm pack` output.
+*.tgz
+
+# Editor / OS noise.
+.DS_Store
+*.swp
